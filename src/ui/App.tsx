@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrentWeather, WeatherStateType} from "../bll/weather/weatherReducer";
@@ -6,14 +6,27 @@ import {RootStateType} from "../bll/store";
 import {Main} from "./Main/Main";
 import {PlateComponent} from "./PlateComponent/PlateComponent";
 import {SubmitHandler, useForm} from "react-hook-form";
-import {Loader} from "./Loader/Loader";
+import {Loader} from "./utils/Loader/Loader";
+import {ErrorSnackbar} from "./utils/ErrorSnackbar/ErrorSnackbar";
+import {AppLoadingStatusType} from "../bll/app/appReducer";
+import {yupResolver} from '@hookform/resolvers/yup';
+
+import * as yup from "yup";
+
 
 interface IFormInput {
   location: string;
 }
 
 const App = () => {
-  const {register, handleSubmit, reset} = useForm<IFormInput>();
+
+  const schema = yup.object({
+    location: yup.string().required(),
+  }).required();
+
+  const {register, handleSubmit, reset} = useForm<IFormInput>({
+    resolver: yupResolver(schema),
+  });
   const onSubmit: SubmitHandler<IFormInput> = data => {
     dispatch(setCurrentWeather(data.location));
     reset()
@@ -23,22 +36,23 @@ const App = () => {
   const dispatch = useDispatch();
   const id = useSelector<RootStateType, string>(state => state.app.page)
   const data = useSelector<RootStateType, WeatherStateType>(state => state.weather)
+  const error = useSelector<RootStateType, string | null>(state => state.app.error)
+  const loading = useSelector<RootStateType, AppLoadingStatusType>(state => state.app.loading)
   // TODO - take location from browser location and local storage
-  // useEffect(() => {
-  //   dispatch(setCurrentWeather('Белая Церковь'))
-  // }, [])
+  useEffect(() => {
+    dispatch(setCurrentWeather('Киев'))
+  }, [dispatch])
 
   return (<div className="App">
 
     <div className={'form'}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input placeholder={'Write with English or Russian language'}
-               className={'inputText'} {...register("location", {required: true, maxLength: 20})} />
-        <input className={'inputSubmit'} type="submit"/>
+        <><input placeholder={'Write Your Location with English or Russian language'}
+                 className={'inputText'} {...register("location", {required: true, maxLength: 20})} />
+          <input className={'inputSubmit'} type="submit"/></>
       </form>
     </div>
-
-
+    {loading === "loading" && <Loader/>}
     {(data && id) ?
       <>
         <Main key={data[id].id} locationName={data[id].currentWeather.location.name}
@@ -75,6 +89,7 @@ const App = () => {
               lastUpdate={`${new Date().toDateString()}`}/>
         <Loader/>
       </>}
+    {error !== null && <ErrorSnackbar error={error}/>}
   </div>)
 
 }

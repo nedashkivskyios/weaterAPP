@@ -1,6 +1,7 @@
 import {Dispatch} from "redux";
 import {weatherAPI} from "../../dal/weatherApi";
 import {v1} from "uuid";
+import {setAppErrorAC, setAppLoadingStatusAC} from "../app/appReducer";
 
 const initialState: WeatherStateType = {} as WeatherStateType;
 
@@ -53,12 +54,15 @@ export const setCurrentWeatherAC = (title: string, currentWeatherData: CurrentWe
 export type setCurrentWeatherActionType = ReturnType<typeof setCurrentWeatherAC>
 
 export const setCurrentWeather = (locationName: string) => (dispatch: Dispatch) => {
+  dispatch(setAppLoadingStatusAC('loading'))
   weatherAPI.getCurrentWeather(locationName)
     .then(function (res: getCurrentWeatherResponseType) {
+      dispatch(setAppLoadingStatusAC('succed'))
       dispatch(setCurrentWeatherAC(locationName, res.data))
     })
-    .catch(function (error: any) {
-      console.error(error);
+    .catch(function () {
+      dispatch(setAppLoadingStatusAC('failed'))
+      dispatch(setAppErrorAC('No matching location found'))
     })
 }
 
@@ -105,6 +109,7 @@ export type CurrentWeather = {
 type getCurrentWeatherResponseType = {
   data: CurrentWeatherResponse
 }
+
 type CurrentWeatherResponse = {
   location: WeatherLocation,
   current: {
