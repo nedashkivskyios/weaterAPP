@@ -29,6 +29,7 @@ const App = () => {
   });
   const onSubmit: SubmitHandler<IFormInput> = data => {
     dispatch(setCurrentWeather(data.location));
+    localStorage.setItem('location', data.location)
     reset()
   }
 
@@ -39,9 +40,10 @@ const App = () => {
   const error = useSelector<RootStateType, string | null>(state => state.app.error)
   const loading = useSelector<RootStateType, AppLoadingStatusType>(state => state.app.loading)
   // TODO - take location from browser location and local storage
+  const locationForUseEffect = localStorage.getItem('location') ?? 'Kiev'
   useEffect(() => {
-    dispatch(setCurrentWeather('Киев'))
-  }, [dispatch])
+    dispatch(setCurrentWeather(locationForUseEffect))
+  }, [dispatch, locationForUseEffect])
 
   return (<div className="App">
 

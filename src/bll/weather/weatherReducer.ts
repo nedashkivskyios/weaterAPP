@@ -64,7 +64,7 @@ export const setCurrentWeather = (locationName: string) => (dispatch: Dispatch) 
       dispatch(setAppLoadingStatusAC('failed'))
       dispatch(setAppErrorAC('No matching location found'))
 
-      setTimeout(()=> {
+      setTimeout(() => {
         dispatch(setAppLoadingStatusAC('idle'))
         dispatch(setAppErrorAC(null))
       }, 10 * 1000)
