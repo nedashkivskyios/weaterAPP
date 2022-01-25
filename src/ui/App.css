@@ -1,0 +1,61 @@
+.App {
+    width: 500px;
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.platesWrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.form {
+    width: 100%;
+    top: 5px;
+    left: 5px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.form form {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.form form input {
+    background-color: #6DAAD9;
+    outline: none;
+}
+
+.form form input:focus {
+    background-color: #a1c1de;
+}
+
+.inputText {
+    display: flex;
+    width: 70%;
+    flex: 1 1 auto;
+    border-color: #6DAAD9;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.inputSubmit {
+    display: flex;
+    flex: 0 0 auto;
+    margin-left: 5px;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #6DAAD9;
+    background-color: #6DAAD9;
+}

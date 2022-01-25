@@ -1,0 +1,37 @@
+.main {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(94, 155, 202, 0.8);
+    border: 1px solid rgba(94, 155, 202, 0.8);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.locationName {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+}
+
+.temp {
+    font-size: 48px;
+    color: white;
+}
+
+.cloudy {
+    font-size: 20px;
+    color: white;
+}
+.lastUpdate {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(192, 192, 192, 0.68);
+}
