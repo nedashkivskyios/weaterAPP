@@ -1,4 +1,5 @@
 # Technologies Stack for project
+
 0. TypeScript
 1. React
 2. Redux

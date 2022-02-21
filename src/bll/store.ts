@@ -4,8 +4,8 @@ import {weatherReducer} from "./weather/weatherReducer";
 import {appReducer} from "./app/appReducer";
 
 const rootReducer = combineReducers({
-  weather: weatherReducer,
-  app: appReducer,
+    weather: weatherReducer,
+    app: appReducer,
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

@@ -9,6 +9,7 @@
     right: 0;
     bottom: 0;
 }
+
 .loader {
     position: absolute;
     top: 0;
@@ -39,11 +40,12 @@
     -webkit-animation-timing-function: linear;
     -moz-animation-timing-function: linear;
 }
+
 .loader div {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    border: 1px solid rgb(94,155,202);
+    border: 1px solid rgb(94, 155, 202);
     position: absolute;
     top: 2px;
     left: 0;
@@ -51,14 +53,17 @@
     bottom: 0;
     margin: auto;
 }
+
 .loader div:nth-child(odd) {
     border-top: none;
     border-left: none;
 }
+
 .loader div:nth-child(even) {
     border-bottom: none;
     border-right: none;
 }
+
 .loader div:nth-child(2) {
     border-width: 2px;
     left: 0px;
@@ -66,6 +71,7 @@
     width: 12px;
     height: 12px;
 }
+
 .loader div:nth-child(3) {
     border-width: 2px;
     left: -1px;
@@ -73,6 +79,7 @@
     width: 18px;
     height: 18px;
 }
+
 .loader div:nth-child(4) {
     border-width: 3px;
     left: -1px;
@@ -80,6 +87,7 @@
     width: 23px;
     height: 23px;
 }
+
 .loader div:nth-child(5) {
     border-width: 3px;
     left: -1px;
@@ -87,6 +95,7 @@
     width: 31px;
     height: 31px;
 }
+
 .loader div:nth-child(6) {
     border-width: 4px;
     left: 0px;
@@ -94,6 +103,7 @@
     width: 39px;
     height: 39px;
 }
+
 .loader div:nth-child(7) {
     border-width: 4px;
     left: 0px;
