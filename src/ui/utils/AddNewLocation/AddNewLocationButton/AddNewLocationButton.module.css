@@ -1,0 +1,48 @@
+.addButton {
+    background-color: rgba(29, 109, 161, 0.8);
+    border: 1px solid rgba(94, 155, 202, 0.8);
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    width: 68px;
+    height: 68px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+}
+
+.addButton img {
+    color: white;
+    transition: 0.5s;
+}
+
+.addButton:hover img {
+    transform: rotate(360deg);
+    cursor: pointer;
+}
+
+.addButton:active {
+    opacity: 1;
+    -webkit-animation: flash 1s;
+    animation: flash 1s;
+}
+
+@-webkit-keyframes flash {
+    0% {
+        opacity: .4;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes flash {
+    0% {
+        opacity: .4;
+    }
+    100% {
+        opacity: 1;
+    }
+}

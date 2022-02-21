@@ -4,14 +4,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {setCurrentWeather, WeatherStateType} from "../bll/weather/weatherReducer";
 import {RootStateType} from "../bll/store";
 import {Main} from "./Main/Main";
-import {PlateComponent} from "./PlateComponent/PlateComponent";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Loader} from "./utils/Loader/Loader";
 import {ErrorSnackbar} from "./utils/ErrorSnackbar/ErrorSnackbar";
 import {AppLoadingStatusType} from "../bll/app/appReducer";
 import {yupResolver} from '@hookform/resolvers/yup';
-
 import * as yup from "yup";
+import {AddNewLocationButton} from "./utils/AddNewLocation/AddNewLocationButton/AddNewLocationButton";
+import {Plates} from "./Plates/Plates";
 
 
 interface IFormInput {
@@ -40,7 +40,7 @@ const App = () => {
     const error = useSelector<RootStateType, string | null>(state => state.app.error)
     const loading = useSelector<RootStateType, AppLoadingStatusType>(state => state.app.loading)
     // TODO - take location from browser location and local storage
-    const locationForUseEffect = localStorage.getItem('location') ?? 'Kiev'
+    const locationForUseEffect = localStorage.getItem('location') ?? ''
     useEffect(() => {
         dispatch(setCurrentWeather(locationForUseEffect))
     }, [dispatch, locationForUseEffect])
@@ -61,30 +61,8 @@ const App = () => {
                       temp={data[id].currentWeather.current.temp_c}
                       cloudy={data[id].currentWeather.current.condition.text}
                       lastUpdate={data[id].currentWeather.current.last_updated}/>
-                <div className={'platesWrapper'}>
-                    <PlateComponent imgUrl={'https://img.icons8.com/small/16/000000/thermometer.png'}
-                                    title={'FEELS LIKE'} data={`${data[id].currentWeather.current.feelslike_c}°`}/>
-                    <PlateComponent imgUrl={'https://img.icons8.com/small/16/000000/wet.png'}
-                                    title={'HUMIDITY'} data={`${data[id].currentWeather.current.humidity}%`}/>
-                    <PlateComponent imgUrl={'https://img.icons8.com/small/16/000000/barometer-gauge.png'}
-                                    title={'PRESSURE'}
-                                    data={`${data[id].currentWeather.current.pressure_mb} hPa`}/>
-                    <PlateComponent imgUrl={'https://img.icons8.com/small/16/000000/wind.png'} title={'WIND SPEED'}
-                                    data={`${data[id].currentWeather.current.wind_kph} kph`}/>
-                    <PlateComponent imgUrl={'https://img.icons8.com/small/16/000000/windsock.png'}
-                                    title={'WIND DIR'} data={data[id].currentWeather.current.wind_dir}/>
-                    <PlateComponent imgUrl={'https://img.icons8.com/material-outlined/16/000000/visible--v1.png'}
-                                    title={'VISIBILITY'} data={`${data[id].currentWeather.current.vis_km} km`}/>
-                    <PlateComponent imgUrl={'https://img.icons8.com/small/16/000000/cloud.png'} title={'CLOUDINESS'}
-                                    data={`${data[id].currentWeather.current.cloud}%`}/>
-                    <PlateComponent imgUrl={"https://img.icons8.com/small/16/000000/hygrometer.png"}
-                                    title={'PRECIPITATION'}
-                                    data={`${data[id].currentWeather.current.precip_mm} mm`}/>
-                    <PlateComponent imgUrl={'https://img.icons8.com/small/16/000000/sun.png'} title={'UV INDEX'}
-                                    data={data[id].currentWeather.current.uv}/>
-                </div>
+                <Plates data={data} id={id}/>
             </>
-
             :
             <>
                 <Main locationName={'Choose Location'}
@@ -94,6 +72,7 @@ const App = () => {
                 <Loader/>
             </>}
         {error !== null && <ErrorSnackbar error={error}/>}
+        <AddNewLocationButton/>
     </div>)
 
 }
