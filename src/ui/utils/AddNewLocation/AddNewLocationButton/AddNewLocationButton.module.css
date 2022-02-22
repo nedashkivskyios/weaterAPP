@@ -1,6 +1,6 @@
 .addButton {
-    background-color: rgba(29, 109, 161, 0.8);
-    border: 1px solid rgba(94, 155, 202, 0.8);
+    background-color: var(--accent-color);
+    border: 1px solid var(--accent-color);
     position: absolute;
     bottom: 25px;
     right: 25px;
@@ -14,7 +14,7 @@
 }
 
 .addButton img {
-    color: white;
+    color: var(--primary-text-color);
     transition: 0.5s;
 }
 

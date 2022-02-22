@@ -4,6 +4,7 @@ const initialState: AppReducerStateType = {
     page: '',
     loading: 'idle',
     error: null,
+    addNewLocationStatus: 'hide',
 }
 
 export const appReducer = (state = initialState, action: ActionsType): AppReducerStateType => {
@@ -26,11 +27,21 @@ export const appReducer = (state = initialState, action: ActionsType): AppReduce
                 loading: action.loading,
             }
         }
+        case "DVK/ADD-NEW-LOCATION-STATUS": {
+            return {
+                ...state,
+                addNewLocationStatus: action.status
+            }
+        }
         default: {
             return state
         }
     }
 }
+export type setAddNewLocationStatusActionType = ReturnType<typeof setAddNewLocationStatusAC>
+export const setAddNewLocationStatusAC = (status: AppAddNewLocationStatusType) => ({
+    type: 'DVK/ADD-NEW-LOCATION-STATUS', status,
+} as const)
 export type setAppErrorActionType = ReturnType<typeof setAppErrorAC>
 export const setAppErrorAC = (error: string | null) => ({
     type: 'SET-APP-ERROR', error,
@@ -45,10 +56,13 @@ export const setAppLoadingStatusAC = (loading: AppLoadingStatusType) => ({
 type ActionsType = setCurrentWeatherActionType
     | setAppErrorActionType
     | setAppLoadingStatusActionType
+    | setAddNewLocationStatusActionType
 
 export type AppReducerStateType = {
     page: string
     loading: AppLoadingStatusType
     error: string | null
+    addNewLocationStatus: AppAddNewLocationStatusType
 }
 export type AppLoadingStatusType = 'idle' | 'succed' | 'failed' | 'loading'
+export type AppAddNewLocationStatusType = 'show' | 'hide'

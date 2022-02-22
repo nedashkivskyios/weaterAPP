@@ -2,7 +2,7 @@
     position: absolute;
     left: 25px;
     bottom: 25px;
-    background-color: red;
+    background-color: var(--error-main-color);
     width: 500px;
     min-height: 25px;
     display: flex;
@@ -15,7 +15,7 @@
 .errorText {
     margin-left: 10px;
     margin-right: 25px;
-    color: white;
+    color: var(--primary-text-color);
 }
 
 .rightErrorButton {
@@ -31,10 +31,10 @@
 .errorButton {
     background-color: transparent;
     border: none;
-    color: white;
+    color: var(--primary-text-color);
 }
 
 .errorButton:hover {
-    color: #a1c1de;
+    color: var(--default-background-color);
     cursor: pointer;
 }

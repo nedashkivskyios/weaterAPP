@@ -33,19 +33,15 @@
 }
 
 .form form input {
-    background-color: #6DAAD9;
+    background-color: var(--accent-background-color);
     outline: none;
-}
-
-.form form input:focus {
-    background-color: #a1c1de;
 }
 
 .inputText {
     display: flex;
     width: 70%;
     flex: 1 1 auto;
-    border-color: #6DAAD9;
+    border-color: var(--accent-background-color);
     border-radius: 10px;
     padding: 5px;
 }
@@ -54,9 +50,9 @@
     display: flex;
     flex: 0 0 auto;
     margin-left: 5px;
-    color: white;
+    color: var(--primary-text-color);
     padding: 5px;
     border-radius: 10px;
-    border: 1px solid #6DAAD9;
-    background-color: #6DAAD9;
+    border: 1px solid var(--accent-background-color);
+    background-color: var(--accent-background-color);
 }

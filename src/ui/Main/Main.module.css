@@ -6,8 +6,8 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: rgba(94, 155, 202, 0.8);
-    border: 1px solid rgba(94, 155, 202, 0.8);
+    background-color: var(--accent-background-color);
+    border: 1px solid var(--accent-background-color);
     border-radius: 10px;
     margin-bottom: 10px;
 }
@@ -15,17 +15,17 @@
 .locationName {
     font-size: 32px;
     font-weight: bold;
-    color: white;
+    color: var(--primary-text-color);
 }
 
 .temp {
     font-size: 48px;
-    color: white;
+    color: var(--primary-text-color);
 }
 
 .cloudy {
     font-size: 20px;
-    color: white;
+    color: var(--primary-text-color);
 }
 
 .lastUpdate {
@@ -34,5 +34,5 @@
     right: 5px;
     font-size: 12px;
     font-weight: bold;
-    color: rgba(192, 192, 192, 0.68);
+    color: var(--default-background-color);
 }

@@ -7,11 +7,12 @@ import {Main} from "./Main/Main";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Loader} from "./utils/Loader/Loader";
 import {ErrorSnackbar} from "./utils/ErrorSnackbar/ErrorSnackbar";
-import {AppLoadingStatusType} from "../bll/app/appReducer";
+import {AppAddNewLocationStatusType, AppLoadingStatusType} from "../bll/app/appReducer";
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import {AddNewLocationButton} from "./utils/AddNewLocation/AddNewLocationButton/AddNewLocationButton";
 import {Plates} from "./Plates/Plates";
+import {AddNewLocationModal} from "./utils/AddNewLocation/AddNewLocationModal/AddNewLocationModal";
 
 
 interface IFormInput {
@@ -39,6 +40,7 @@ const App = () => {
     const data = useSelector<RootStateType, WeatherStateType>(state => state.weather)
     const error = useSelector<RootStateType, string | null>(state => state.app.error)
     const loading = useSelector<RootStateType, AppLoadingStatusType>(state => state.app.loading)
+    const addNewLocationStatus = useSelector<RootStateType, AppAddNewLocationStatusType>(state => state.app.addNewLocationStatus)
     // TODO - take location from browser location and local storage
     const locationForUseEffect = localStorage.getItem('location') ?? ''
     useEffect(() => {
@@ -73,6 +75,7 @@ const App = () => {
             </>}
         {error !== null && <ErrorSnackbar error={error}/>}
         <AddNewLocationButton/>
+        {addNewLocationStatus === 'show' && <AddNewLocationModal/>}
     </div>)
 
 }

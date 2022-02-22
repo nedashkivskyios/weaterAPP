@@ -8,8 +8,8 @@
     height: 150px;
     border-radius: 10px;
     margin-bottom: 10px;
-    background-color: rgba(94, 155, 202, 0.8);
-    border: 1px solid rgba(94, 155, 202, 0.8);
+    background-color: var(--accent-background-color);
+    border: 1px solid var(--accent-background-color);
 }
 
 .title {
@@ -31,5 +31,5 @@
 .data {
     font-weight: bold;
     font-size: 24px;
-    color: white;
+    color: var(--primary-text-color);
 }
