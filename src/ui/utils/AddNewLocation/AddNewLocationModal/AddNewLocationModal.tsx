@@ -11,7 +11,7 @@ export const AddNewLocationModal = () => {
     return (
         <div className={styles.blockWrapper}>
             <div className={`${styles.modalWrapper} ${styles.fadeIn}`}>
-                a;ldsfjk
+                Modal must be created!
                 <button onClick={onButtonClick}>Закрыть</button>
             </div>
         </div>

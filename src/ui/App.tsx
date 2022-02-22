@@ -42,7 +42,7 @@ const App = () => {
     const loading = useSelector<RootStateType, AppLoadingStatusType>(state => state.app.loading)
     const addNewLocationStatus = useSelector<RootStateType, AppAddNewLocationStatusType>(state => state.app.addNewLocationStatus)
     // TODO - take location from browser location and local storage
-    const locationForUseEffect = localStorage.getItem('location') ?? ''
+    const locationForUseEffect = localStorage.getItem('location') ?? 'Kyiv'
     useEffect(() => {
         dispatch(setCurrentWeather(locationForUseEffect))
     }, [dispatch, locationForUseEffect])

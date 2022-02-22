@@ -30,7 +30,7 @@ export const appReducer = (state = initialState, action: ActionsType): AppReduce
         case "DVK/ADD-NEW-LOCATION-STATUS": {
             return {
                 ...state,
-                addNewLocationStatus: action.status
+                addNewLocationStatus: action.status,
             }
         }
         default: {
@@ -38,10 +38,12 @@ export const appReducer = (state = initialState, action: ActionsType): AppReduce
         }
     }
 }
+
 export type setAddNewLocationStatusActionType = ReturnType<typeof setAddNewLocationStatusAC>
 export const setAddNewLocationStatusAC = (status: AppAddNewLocationStatusType) => ({
     type: 'DVK/ADD-NEW-LOCATION-STATUS', status,
 } as const)
+
 export type setAppErrorActionType = ReturnType<typeof setAppErrorAC>
 export const setAppErrorAC = (error: string | null) => ({
     type: 'SET-APP-ERROR', error,
